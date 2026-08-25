@@ -1,4 +1,189 @@
-Noorunisha is learning Python and Generative AI.
-She wants to become a Python AI developer.
-She is currently working with Power BI and SQL.
-Her goal is to move from Business Intelligence into AI development.
+PYTHON FUNDAMENTALS
+
+Python is a high-level, interpreted, general-purpose programming language. It is widely used in web development, automation, data analysis, machine learning, artificial intelligence, and scripting.
+
+Python variables store references to values. Common built-in data types include int for integers, float for decimal numbers, str for text, bool for True or False values, list for ordered mutable collections, tuple for ordered immutable collections, set for unique unordered values, and dict for key-value pairs.
+
+Functions are reusable blocks of code defined using the def keyword. Functions can accept parameters and return values. Functions help make programs modular, reusable, readable, and easier to test.
+
+Object-oriented programming (OOP) organizes software around objects and classes. Important OOP concepts include classes, objects, inheritance, encapsulation, abstraction, and polymorphism.
+
+Exception handling allows a program to handle errors without immediately terminating. Python commonly uses try, except, else, and finally blocks for exception handling.
+
+A Python module is a Python file containing reusable code. A package is a collection of related modules. Virtual environments isolate project dependencies so different Python projects can use different package versions.
+
+
+GENERATIVE AI
+
+Generative AI is a type of artificial intelligence that can create new content such as text, images, audio, video, and code based on patterns learned from training data.
+
+Large Language Models (LLMs) are AI models trained on large amounts of text. They can understand and generate human-like text. Examples of LLM tasks include answering questions, summarizing documents, generating code, translating languages, and extracting information.
+
+A token is a unit of text processed by an LLM. A token can represent a complete word, part of a word, punctuation, or another piece of text. LLMs process input and generate output using tokens.
+
+A prompt is the instruction or input provided to an AI model. Prompt engineering is the practice of designing clear and effective prompts to obtain better results from an AI model.
+
+Context is the information provided to an AI model along with a prompt. Context helps the model understand the specific information it should use when generating a response.
+
+A context window is the maximum amount of information, measured in tokens, that a model can process in a single interaction. If the supplied information is too large, some information may need to be removed, summarized, or retrieved selectively.
+
+Embeddings are numerical representations of text, images, or other data. Similar meanings can be represented by vectors that are close to each other in vector space. Embeddings are commonly used for semantic search, recommendation systems, clustering, and Retrieval-Augmented Generation.
+
+Traditional keyword search looks mainly for matching words. Semantic search uses embeddings to find information based on meaning, even when the exact words in the query and document are different.
+
+
+RETRIEVAL-AUGMENTED GENERATION (RAG)
+
+Retrieval-Augmented Generation, commonly called RAG, is an AI architecture that combines information retrieval with text generation. Instead of relying only on the knowledge stored inside an LLM, RAG retrieves relevant information from an external knowledge source and provides that information to the LLM as context.
+
+A basic RAG pipeline has two major stages: indexing and retrieval-generation.
+
+During indexing, documents are loaded into the application. The documents are divided into smaller pieces called chunks. Each chunk is converted into a numerical vector called an embedding. These embeddings are stored in a vector database or vector store.
+
+Chunking is the process of dividing a large document into smaller pieces. Chunk size and chunk overlap affect retrieval quality. Very small chunks may lose context, while very large chunks may contain too much unrelated information.
+
+Embeddings represent the semantic meaning of text as numerical vectors. An embedding model converts text into vectors so that semantically similar pieces of text can be compared mathematically.
+
+A vector store is used to store and search embeddings. Examples include FAISS, Chroma, Pinecone, and other vector databases. In a RAG system, the vector store helps find documents that are semantically similar to the user's question.
+
+During retrieval, the user's question is converted into an embedding. The system compares the question embedding with stored document embeddings and retrieves the most relevant chunks.
+
+Similarity search finds the chunks that are most similar in meaning to the user's question. Common similarity measures include cosine similarity and Euclidean distance.
+
+After retrieval, the selected information is added to the user's prompt as context. The LLM then generates an answer using the question and the retrieved context.
+
+The complete RAG flow can be represented as:
+
+Documents → Chunking → Embeddings → Vector Store → User Query → Similarity Search → Relevant Context → LLM → Answer
+
+RAG is useful when an application needs to answer questions using private, changing, domain-specific, or external information that may not be available in the LLM's original training data.
+
+For example, a company can create a RAG application over internal HR policies. An employee could ask a question about leave policy, and the system could retrieve the relevant section from the company documents before asking the LLM to generate the answer.
+
+RAG can reduce the need to retrain an LLM whenever the underlying information changes. Instead, the external knowledge source can be updated and the retrieval system can use the updated information.
+
+However, RAG does not automatically eliminate hallucinations. If the retrieval system retrieves irrelevant or incomplete information, the LLM may still generate an incorrect answer. Retrieval quality, chunking strategy, embedding quality, prompt design, and the quality of the source documents all affect the final result.
+
+RAG is different from fine-tuning. Fine-tuning changes or adapts a model using additional training data, while RAG provides external information to the model at query time without changing the model's parameters.
+
+
+
+AI AGENTS
+
+An AI agent is a software system that uses an AI model to understand a goal, decide what actions are needed, use available tools, and work toward completing the task.
+
+A traditional LLM mainly responds to a prompt. An AI agent can go beyond generating text by interacting with external tools and systems.
+
+An agent can use tools such as web search, calculators, databases, APIs, Python programs, file systems, or business applications. Tools allow an agent to perform actions instead of only generating an answer.
+
+A typical AI agent contains several components: an AI model, instructions or goals, tools, memory or state, and an execution loop.
+
+The basic agent workflow can be represented as:
+
+User Goal → AI Model → Decide Action → Use Tool → Observe Result → Decide Next Action → Final Answer
+
+The agent loop allows the system to perform multiple steps. For example, if a user asks an agent to find the average sales for a particular month, the agent could identify the required data, query a database, calculate the average, verify the result, and then provide the answer.
+
+Memory allows an agent to maintain useful information across steps of a task. Depending on the system, memory can include conversation history, task state, previous tool results, or information stored in an external database.
+
+Planning is the process of breaking a larger goal into smaller actions. An agent may determine which steps need to be completed and in what order.
+
+Tools are an important difference between a basic chatbot and an agent. A chatbot may only generate a response, while an agent can use tools to retrieve information, perform calculations, call APIs, modify files, or interact with other systems.
+
+RAG and AI agents are related but are not the same thing.
+
+RAG is primarily a method for retrieving relevant information and providing it to an LLM as context. An AI agent is a system that can reason about a goal, choose actions, use tools, and potentially perform multiple steps.
+
+RAG can be used as one of the tools or capabilities inside an AI agent. For example, an AI support agent could use RAG to search company documentation before answering a customer's question.
+
+A simple RAG system can follow a mostly fixed pipeline:
+
+Question → Retrieve Information → Generate Answer
+
+An agentic system can be more dynamic:
+
+Goal → Reason → Choose Tool → Execute → Observe → Reason Again → Complete Goal
+
+AI agents are useful for tasks such as research, customer support, data analysis, coding assistance, document processing, workflow automation, and information retrieval.
+
+
+
+AGENTIC AI
+
+Agentic AI refers to AI systems designed to pursue goals, make decisions, take actions, and adapt their behavior based on the results of those actions.
+
+The main idea behind Agentic AI is that the AI system is not limited to producing a single response. It can perform a sequence of actions to accomplish a larger objective.
+
+A simple Agentic AI workflow can be represented as:
+
+Goal → Plan → Act → Observe → Evaluate → Continue or Finish
+
+Planning involves deciding what steps are required to achieve the user's goal. The plan may change based on information discovered during execution.
+
+Action means performing an operation using an available tool. Examples include searching the web, querying a database, running Python code, reading a document, sending an API request, or interacting with another application.
+
+Observation is the information returned after an action is performed. The system can use this information to decide what to do next.
+
+Evaluation allows the system to determine whether the task has been completed successfully or whether additional actions are required.
+
+Agentic AI can use multiple tools and perform multiple steps. For example, an AI data-analysis agent could receive a request to analyze monthly sales. It could locate the required file, read the data, clean the data using Python, calculate statistics, create a visualization, check the results, and then summarize the findings.
+
+Agentic workflows can be deterministic or dynamic. In a deterministic workflow, predefined steps are followed in a fixed order. In a dynamic agentic workflow, the AI model can decide which action or tool should be used next.
+
+Multi-agent systems use multiple specialized AI agents that collaborate to complete a larger task. Different agents may have different responsibilities, such as research, analysis, coding, validation, or reporting.
+
+Agentic AI is different from a simple chatbot. A chatbot generally receives a prompt and generates a response. An agentic system can interpret a goal, plan multiple steps, use tools, observe results, and continue working toward the goal.
+
+RAG can be part of an Agentic AI system. An agent may decide that it needs information from a knowledge base and use a RAG retrieval process as one of its actions.
+
+The relationship can therefore be understood as:
+
+LLM → Generates and reasons about responses
+
+RAG → Retrieves relevant external information
+
+AI Agent → Uses an LLM and tools to accomplish a task
+
+Agentic AI → Uses goal-directed, multi-step, adaptive behavior to accomplish more complex tasks
+
+Agentic AI is useful for research assistants, coding agents, customer-support automation, business-process automation, data-analysis assistants, workflow automation, and other tasks that require multiple decisions and actions.
+
+
+
+RESPONSIBLE AI
+
+Responsible AI is the practice of designing, developing, deploying, and using artificial intelligence systems in a safe, ethical, fair, transparent, reliable, and accountable way.
+
+Responsible AI is important because AI systems can affect people's decisions, privacy, safety, opportunities, and access to services.
+
+Important principles of Responsible AI include fairness, transparency, explainability, accountability, privacy, security, reliability, safety, and human oversight.
+
+Fairness means an AI system should avoid producing unfair or discriminatory outcomes for individuals or groups. Bias can enter an AI system through training data, algorithms, system design, or the way the system is used.
+
+Transparency means providing understandable information about how an AI system is designed, what data it uses, what its limitations are, and how its outputs are produced.
+
+Explainability means being able to provide understandable reasons or supporting information for an AI system's decisions or outputs. Explainability is especially important in high-impact areas where people need to understand why a decision was made.
+
+Accountability means that people and organizations remain responsible for the AI systems they develop and deploy. AI systems should have appropriate monitoring, governance, testing, and ownership.
+
+Privacy means protecting personal and sensitive information used by AI systems. Organizations should control access to data, minimize unnecessary data collection, and follow applicable privacy requirements.
+
+Security means protecting AI systems, models, data, APIs, and infrastructure from unauthorized access, manipulation, attacks, and misuse.
+
+Reliability means an AI system should behave consistently and produce useful results under expected conditions. AI systems should be tested and monitored to identify failures.
+
+Safety means designing AI systems to reduce the risk of harmful outcomes. Systems should include appropriate safeguards, testing, monitoring, and human intervention when necessary.
+
+Human oversight means humans should remain involved when AI decisions can have significant consequences. AI should support human decision-making rather than blindly replacing human judgment in situations where human review is necessary.
+
+AI hallucination occurs when an AI model generates information that appears plausible but is incorrect, unsupported, or fabricated. RAG can help ground responses in retrieved information, but RAG does not completely eliminate hallucinations.
+
+Responsible RAG systems should use trustworthy source documents, appropriate access controls, careful retrieval, clear prompts, monitoring, and evaluation. Sensitive information should not be exposed to users who are not authorized to access it.
+
+Responsible AI is particularly important when developing AI agents because agents can take actions using tools. An incorrect decision from an agent can potentially cause an incorrect action, so permissions, validation, monitoring, and human approval may be required.
+
+A responsible AI development process can include:
+
+Define requirements → Assess risks → Prepare data → Develop model/system → Test → Validate → Deploy → Monitor → Improve
+
+Responsible AI is not a single feature that is added at the end of a project. It should be considered throughout the entire AI system lifecycle.
