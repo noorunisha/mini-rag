@@ -1,0 +1,4 @@
+Noorunisha is learning Python and Generative AI.
+She wants to become a Python AI developer.
+She is currently working with Power BI and SQL.
+Her goal is to move from Business Intelligence into AI development.
